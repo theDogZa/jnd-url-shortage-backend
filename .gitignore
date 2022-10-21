@@ -4,6 +4,7 @@
 /storage/*.key
 /vendor
 /storage/*.*
+/storage/appsyslog
 /.idea
 /.vscode
 /nbproject
