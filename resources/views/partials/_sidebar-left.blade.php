@@ -134,12 +134,12 @@
                             <li class="nav-main-heading"><span class="sidebar-mini-visible">DT</span><span class="sidebar-mini-hidden">Data</span></li>
                             <li>
                                 <a class="{{ request()->is('url_shortener') ? ' active' : '' }}" href="{{ route('url_shortener.index') }}">
-                                    <i class="fa fa-image"></i><span class="sidebar-mini-hide">url shortener</span>
+                                    <i class="fa fa-link"></i><span class="sidebar-mini-hide">URL Management</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="{{ request()->is('url_logs') ? ' active' : '' }}" href="{{ route('url_logs.index') }}">
-                                    <i class="fa fa-image"></i><span class="sidebar-mini-hide">url logs</span>
+                                    <i class="fa fa-file"></i><span class="sidebar-mini-hide">URL Logs</span>
                                 </a>
                             </li>
                             

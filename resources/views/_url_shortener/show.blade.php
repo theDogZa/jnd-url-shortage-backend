@@ -73,6 +73,17 @@
                     <input type="text" class="form-control" id="created_at" name="created_at" disabled value="{{@$urlshortener->created_at}}" placeholde="{{__('url_shortener.created_at.placeholder')}}">
                 </div>
                 @endif
+                @if($arrShowField['created_uid']==true)
+                <div class="{{config('theme.layout.view')}}">
+                    <label for="created_uid">{{ucfirst(__('url_shortener.created_uid.label'))}}
+                        @if(__('url_shortener.created_uid.popover.title') != "")
+                        @include('components._popover_info', ['title' => ucfirst(__('url_shortener.created_uid.popover.title')) ,'content'=> ucfirst(__('url_shortener.created_uid.popover.content'))])
+                        @endif
+                    </label>
+                    
+                    <input type="text" class="form-control" id="created_uid" name="created_uid" disabled value="{{ @$urlshortener->User->username }}" placeholde="{{__('url_shortener.created_uid.placeholder')}}">
+                </div>
+                @endif
                 @if($arrShowField['active']==true)
                 <div class="{{config('theme.layout.view')}}">
                     <label for="active">{{ucfirst(__('url_shortener.active.label'))}}

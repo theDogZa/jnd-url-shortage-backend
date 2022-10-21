@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 use App\Models\UrlShortener;
+use App\Services\NetworkService;
 
 class UrlShortenerController extends Controller
 {
@@ -28,9 +29,9 @@ class UrlShortenerController extends Controller
     header("Pragma: no-cache");
     header('Content-Type: text/html');
 
-    $this->arrShowFieldIndex = ['short_url' => 1,  'original_url' => 1,  'ip' => 1,  'count' => 1,  'active' => 1, 'created_at' =>1 		];
-		$this->arrShowFieldFrom = ['short_url' => 1,  'original_url' => 1,  'ip' => 1,  'count' => 1,  'active' => 1, 	'created_at' =>1 	];
-		$this->arrShowFieldView = ['short_url' => 1,  'original_url' => 1,  'ip' => 1,  'count' => 1,  'active' => 1, 'created_at' =>1 		];
+    $this->arrShowFieldIndex = ['short_url' => 1,  'original_url' => 1,  'ip' => 1,  'count' => 1,  'active' => 1, 'created_at' =>1 ,'created_uid' =>1 		];
+		$this->arrShowFieldFrom = ['short_url' => 1,  'original_url' => 1,  'ip' => 1,  'count' => 1,  'active' => 1, 	'created_at' =>1 ,'created_uid' =>1 	];
+		$this->arrShowFieldView = ['short_url' => 1,  'original_url' => 1,  'ip' => 1,  'count' => 1,  'active' => 1, 'created_at' =>1 ,'created_uid' =>1 		];
   }
 
     /**
@@ -89,7 +90,8 @@ class UrlShortenerController extends Controller
     $compact->search = (object) $request->all();
 
     if(@$input->sort == null){
-      $compact->collection = $results->sortable(['id','desc'])->paginate(config('theme.paginator.paginate'));
+      $compact->collection = $results->sortable(['id'=>'desc'])->paginate(config('theme.paginator.paginate'));
+  
     }else{
       $compact->collection = $results->sortable()->paginate(config('theme.paginator.paginate'));
     }
@@ -106,8 +108,12 @@ class UrlShortenerController extends Controller
    */
   public function create(Request $request)
   {
+      $NetworkService = new NetworkService();
+
       $compact = (object) array();
       $compact->arrShowField = $this->arrShowFieldFrom;
+
+      $compact->ip = $NetworkService->getClientIp();
 
       return view('_url_shortener.form', (array) $compact);
   }
@@ -190,6 +196,8 @@ class UrlShortenerController extends Controller
     $compact = (object) array();
     $compact->arrShowField = $this->arrShowFieldView;
     $compact->urlshortener = UrlShortener::select($select)->findOrFail($id);
+
+    // dd($compact->urlshortener);
 
     return view('_url_shortener.show', (array) $compact);
   }

@@ -42,7 +42,7 @@
                         </label>
                         <div class="input-group">
                         <input type="text" class="form-control" id="original_url" name="original_url" required  value="{{ @$original_url }}" placeholde="{{__('url_shortener.original_url.placeholder')}}">
-                        <button type="button" id="btn_gen_url_shorten" class="btn btn-secondary">Submit</button>
+                        <button type="button" id="btn_gen_url_shorten" class="btn btn-secondary">Generate URL</button>
                         @include('components._invalid_feedback',['required'=>'required','message'=>ucfirst(__('url_shortener.original_url.label')) ])
                         </div>
 
@@ -56,7 +56,7 @@
                             @include('components._popover_info', ['title' => ucfirst(__('url_shortener.short_url.popover.title')) ,'content'=> ucfirst(__('url_shortener.short_url.popover.content'))])
                             @endif
                         </label>
-                        <input type="text" class="form-control" id="short_url" name="short_url" required  value="{{ @$short_url }}" placeholde="{{__('url_shortener.short_url.placeholder')}}">
+                        <input type="text" class="form-control" id="short_url" name="short_url" required readonly value="{{ @$short_url }}" placeholde="{{__('url_shortener.short_url.placeholder')}}">
                         @include('components._invalid_feedback',['required'=>'required','message'=>ucfirst(__('url_shortener.short_url.label')) ])
                     </div>
                     @endif
@@ -68,7 +68,7 @@
                             @include('components._popover_info', ['title' => ucfirst(__('url_shortener.ip.popover.title')) ,'content'=> ucfirst(__('url_shortener.ip.popover.content'))])
                             @endif
                         </label>
-                        <input type="text" class="form-control" id="ip" name="ip" required  value="{{ @$ip }}" placeholde="{{__('url_shortener.ip.placeholder')}}">
+                        <input type="text" class="form-control" id="ip" name="ip" required readonly value="{{ @$ip }}" placeholde="{{__('url_shortener.ip.placeholder')}}">
                         @include('components._invalid_feedback',['required'=>'required','message'=>ucfirst(__('url_shortener.ip.label')) ])
                     </div>
                     @endif

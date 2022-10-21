@@ -25,5 +25,10 @@ class UrlShortener extends Model
 
     public $sortable = [ 'id','short_url','original_url','ip','count','active', 'created_uid', 'updated_uid'];
 
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'created_uid','id');
+    }
+
     
 }

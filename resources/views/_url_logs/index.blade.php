@@ -73,12 +73,12 @@
                         </td>
                         @endif
                         @if(!empty( $arrShowField['ip'] ))
-                        <td>
+                        <td class="text-center">
                             {!! @$item->ip !!}
                         </td>
                         @endif
                         @if(!empty( $arrShowField['created_at'] ))
-                        <td>
+                        <td class="text-center">
                             {!! @$item->created_at !!}
                         </td>
                         @endif

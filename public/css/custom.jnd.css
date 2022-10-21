@@ -77,6 +77,10 @@ right: 0.5rem;
     border-bottom-right-radius:0.25rem !important;
 }
 
+.l-unset {
+    left: unset !important;
+}
+
 /* .table th,
 .table td {
     min-width: 20px !important;

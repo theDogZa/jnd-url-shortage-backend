@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');
     Route::get('/home', 'DashboardController@dashboard')->name('home');
+    Route::get('/', 'DashboardController@dashboard')->name('home');
+
 
 
     Route::resource('/users', 'UsersController')->names([

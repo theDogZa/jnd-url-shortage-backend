@@ -59,6 +59,13 @@
                             @sortablelink('created_at',__('url_shortener.created_at.th'))
                         </th>
                         @endif
+
+                        @if($arrShowField['created_uid']==true)
+                        <th class="text-center">
+                            @sortablelink('created_uid',__('url_shortener.created_uid.th'))
+                        </th>
+                        @endif
+
                         @if($arrShowField['active']==true)
                         <th class="text-center">
                             @sortablelink('active',__('url_shortener.active.th'))
@@ -74,31 +81,38 @@
                         <td>{!! $loop->iteration+(($collection->currentPage()-1)*$collection->perPage()) !!}</td>
                         @if(!empty( $arrShowField['short_url'] ))
                         <td>
-                            {!! @$item->short_url !!}
+                            <a href="{{config('app.frontend_url')}}/{!! @$item->short_url !!}" target="_blank" title="{!! $item->short_url !!}"> {!! @$item->short_url !!}</a>
                         </td>
                         @endif
                         @if(!empty( $arrShowField['original_url'] ))
                         <td>
-                            {!! Str::limit( @$item->original_url,config('theme.textarea.limit'),config('theme.textarea.end_str')) !!}
+                            <a href="{{ @$item->original_url }}" target="_blank"> {!! Str::limit( @$item->original_url,config('theme.textarea.limit'),config('theme.textarea.end_str')) !!}</a>
                         </td>
                         @endif
                         @if(!empty( $arrShowField['ip'] ))
-                        <td>
+                        <td class="text-center">
                             {!! @$item->ip !!}
                         </td>
                         @endif
                         @if(!empty( $arrShowField['count'] ))
-                        <td>
+                        <td class="text-center">
                             {!! @$item->count !!}
                         </td>
                         @endif
                         @if(!empty( $arrShowField['created_at'] ))
-                        <td>
+                        <td class="text-center">
                             {!! @$item->created_at !!}
                         </td>
                         @endif
+
+                        @if(!empty( $arrShowField['created_uid'] ))
+                        <td class="text-center">
+                            {!! @$item->User->username !!}
+                        </td>
+                        @endif
+
                         @if(!empty( $arrShowField['active'] ))
-                        <td>
+                        <td class="text-center">
                             @include('components._badge_radio',['val'=>@$item->active,'tTrue'=>ucfirst(__('url_shortener.active.text_radio.true')), 'tFalse'=>ucfirst(__('url_shortener.active.text_radio.false'))])
                         </td>
                         @endif

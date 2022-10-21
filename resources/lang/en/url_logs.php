@@ -30,18 +30,18 @@ return [
     ],
 
     'short_url' => [
-        'th' => 'Shorturl',
-        'label' => 'Shorturl',
-        'placeholder' => 'Shorturl',
+        'th' => 'Short url',
+        'label' => 'Short url',
+        'placeholder' => 'Short url',
         'popover' => [
             'title' => '',
             'content' => ''
         ],
     ],
     'original_url' => [
-        'th' => 'Originalurl',
-        'label' => 'Originalurl',
-        'placeholder' => 'Originalurl',
+        'th' => 'Originalu rl',
+        'label' => 'Original url',
+        'placeholder' => 'Original url',
         'popover' => [
             'title' => '',
             'content' => ''
@@ -57,9 +57,9 @@ return [
         ],
     ],
     'created_at' => [
-        'th' => 'Createdat',
-        'label' => 'Createdat',
-        'placeholder' => 'Createdat',
+        'th' => 'Created at',
+        'label' => 'Created at',
+        'placeholder' => 'Created at',
         'popover' => [
             'title' => '',
             'content' => ''

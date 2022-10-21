@@ -80,9 +80,9 @@ return [
         ],
     ],
     'created_uid' => [
-        'th' => 'Createdu',
-        'label' => 'Createdu',
-        'placeholder' => 'Createdu',
+        'th' => 'UserName',
+        'label' => 'UserName',
+        'placeholder' => 'UserName',
         'popover' => [
             'title' => '',
             'content' => ''

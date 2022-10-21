@@ -46,12 +46,14 @@ class PermissionsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Permission::get()->map(function ($permission) {         
-            Artisan::call('view:clear');
-            Gate::define($permission->slug, function ($user) use ($permission) {
-                return $user->hasPermissionTo($permission);
+        if(!app()->runningInConsole()){
+            Permission::get()->map(function ($permission) {         
+                Artisan::call('view:clear');
+                Gate::define($permission->slug, function ($user) use ($permission) {
+                    return $user->hasPermissionTo($permission);
+                });
             });
-        });
+        }
 
         //Blade directives
         Blade::directive('role', function ($role) {
