@@ -38,7 +38,7 @@ class UsersController extends Controller
 		$this->arrShowFieldFrom = [
 		 'username' => 1,  'first_name' => 1,  'last_name' => 1,  'email' => 1,  'email_verified_at' => 0,  'password' => 0, 'active' => 1,  'activated' => 0,  'remember_token' => 0,  'last_login' => 0, 'user_right' => 1, 'change_password' => 0];
 		$this->arrShowFieldView = [
-     'username' => 1,  'first_name' => 1,  'last_name' => 1,  'email' => 1,  'email_verified_at' => 0,  'password' => 0, 'active' => 1,  'activated' => 0,  'remember_token' => 0,  'last_login' => 1, 'user_right' => 1, 'change_password' => 0, 'created_uid' => 1, 'updated_uid' => 1, 'created_at' => 1, 'updated_at' => 1];
+     'username' => 1,  'first_name' => 1,  'last_name' => 1,  'email' => 1,  'email_verified_at' => 0,  'password' => 0, 'active' => 1,  'activated' => 0,  'remember_token' => 0,  'last_login' => 1, 'user_right' => 1, 'change_password' => 0, 'created_uid' => 0, 'updated_uid' => 0, 'created_at' => 1, 'updated_at' => 1];
   }
 
     /**
@@ -147,15 +147,16 @@ class UsersController extends Controller
 
       $user->activated = 1;
       $user->change_password = 1;
-      $user->remember_token = Str::random(60);
+      $user->token = Str::random(80);
       $user->password = Hash::make($input->password);
-      // $user->created_uid = Auth::id();
+      //$user->created_uid = Auth::id();
       $user->created_at = date("Y-m-d H:i:s");
 
       $user->save();
 
       DB::commit();
       Log::info('Successful: User:store : ', ['data' => $user]);
+
 
       $message = trans('core.message_insert_success');
       $status = 'success';

@@ -21,7 +21,7 @@ class UrlLogsController extends Controller
   public function __construct()
   {
     //$this->middleware('auth');
-    //$this->middleware('RolePermission');
+    $this->middleware('RolePermission');
     Cache::flush();
     header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
     header("Cache-Control: post-check=0, pre-check=0", false);

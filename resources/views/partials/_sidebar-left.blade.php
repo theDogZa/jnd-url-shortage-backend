@@ -132,18 +132,21 @@
 
             
                             <li class="nav-main-heading"><span class="sidebar-mini-visible">DT</span><span class="sidebar-mini-hidden">Data</span></li>
+            
+                            @anypermissions('create.url_shortener|read.url_shortener|update.url_shortener|del.url_shortener')
                             <li>
                                 <a class="{{ request()->is('url_shortener') ? ' active' : '' }}" href="{{ route('url_shortener.index') }}">
                                     <i class="fa fa-link"></i><span class="sidebar-mini-hide">URL Management</span>
                                 </a>
                             </li>
+                            @endanyppermissions
+                            @anypermissions('read.url_logs')
                             <li>
                                 <a class="{{ request()->is('url_logs') ? ' active' : '' }}" href="{{ route('url_logs.index') }}">
                                     <i class="fa fa-file"></i><span class="sidebar-mini-hide">URL Logs</span>
                                 </a>
                             </li>
-                            
-                            
+                            @endanyppermissions
                         </ul>
                     </div>
                     <!-- END Side Navigation -->

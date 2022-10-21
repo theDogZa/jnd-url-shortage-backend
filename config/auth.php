@@ -146,8 +146,8 @@ return [
             'type' => 'checkbox',
             'active' => true
         ],
-        'CONF' => [
-            'name' => 'Config',
+        'DEV' => [
+            'name' => 'DEV',
             'des' => '',
             'type' => 'checkbox',
             'active' => true

@@ -352,7 +352,14 @@ class RolesPermissionsController extends Controller
 
     $compact->role_id = $id;
     $compact->role = Role::select('name')->findOrFail($id);
-    $Permissions = Permission::select('id', 'name', 'group_code', 'description')->where('active', true)->get();
+    $Permissions = Permission::select('id', 'name', 'group_code', 'description');
+
+    if (!$request->user()->hasRole('developer')) {
+
+      $Permissions = $Permissions->where('group_code', '!=', 'DEV');
+    }
+
+    $Permissions = $Permissions->where('active', true)->get();
 
     foreach($Permissions AS $Per){
       $setPermission[$Per->group_code][] = $Per;

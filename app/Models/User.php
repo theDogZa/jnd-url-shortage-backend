@@ -23,7 +23,7 @@ class User extends Model
      */
     
 
-   public $sortable = [ 'id','username','first_name','last_name','email','email_verified_at','password','active','activated', 'user_right','remember_token','last_login', 'created_uid','updated_uid', 'created_at', 'updated_at'];
+   public $sortable = [ 'id','username','first_name','last_name','email','email_verified_at','password','active','activated', 'user_right','remember_token','last_login', 'created_at', 'updated_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -31,7 +31,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password','token','first_name','last_name','active','activated','remember_token','user_right','type','last_login','change_password', 'created_uid', 'updated_uid'
+        'username', 'email', 'password','token','first_name','last_name','active','activated','remember_token','user_right','type','last_login','change_password', 
     ];
 
     /**

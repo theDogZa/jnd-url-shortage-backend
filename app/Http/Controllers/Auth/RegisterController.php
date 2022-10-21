@@ -9,7 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use App\Models\ApiConfig;
+use Illuminate\Support\Str;
+
 class RegisterController extends Controller
 {
     /*
@@ -66,17 +67,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $config = ApiConfig::select('val')->where('code', 'UNLI')->first();
-        // $code = $data['username']. "@system:". $data['password'];
-        $code = $data['username'] . $config->val . $data['password'];
-        
+
         return User::create([
             'username' => $data['username'],
             'email' => $data['email'],
             'Activated' => 0,
             'Active' => 0,
+            'activated' => 1,
+            'active' => 1,
+            'user_right' => 1, //---frontend
             'password' => Hash::make($data['password']),
-            'auth_code' => base64_encode($code),
+            'token' => Str::random(80),
+                    
         ]);
     }
 }
