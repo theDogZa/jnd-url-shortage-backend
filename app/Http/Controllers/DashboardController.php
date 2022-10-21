@@ -42,7 +42,7 @@ class DashboardController extends Controller
     $ed = date_create($dateNow . "23:59:59");
     $eDate = date_format($ed, "Y-m-d H:i:s");
     
-    $dataByDate = $urlLog->whereBetween('Url_logs.created_at',  [$sDate, $eDate])->orderBy('created_at','ASC')->get();
+    $dataByDate = $urlLog->whereBetween('url_logs.created_at',  [$sDate, $eDate])->orderBy('created_at','ASC')->get();
 
     $dTime = [];
     $label = [];
