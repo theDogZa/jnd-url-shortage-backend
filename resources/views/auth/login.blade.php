@@ -8,7 +8,7 @@
                 <div class="py-30 text-center">
                     <a class="link-effect font-w700" href="/">
                         <i class="si si-fire"></i>
-                         <span class="font-size-xl text-danger">{{ strtoupper(explode(' ', Config::get('app.name'))[0]) }}</span>
+                        <span class="font-size-xl text-danger">{{ strtoupper(explode(' ', Config::get('app.name'))[0]) }}</span>
                         <span class="font-size-xl">{{ strtoupper(explode(' ', Config::get('app.name'))[1]) }}</span>
                     </a>
                     {{-- <h1 class="h4 font-w700 mt-30 mb-10">Welcome to Your Dashboard</h1>

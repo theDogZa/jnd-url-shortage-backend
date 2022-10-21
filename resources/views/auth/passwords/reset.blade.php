@@ -8,7 +8,8 @@
                 <div class="py-30 text-center">
                     <a class="link-effect font-w700" href="/">
                         <i class="si si-fire"></i>
-                        <span class="font-size-xl text-danger">SiS</span><span class="font-size-xl">Cloud</span>
+                        <span class="font-size-xl text-danger">{{ strtoupper(explode(' ', Config::get('app.name'))[0]) }}</span>
+                        <span class="font-size-xl">{{ strtoupper(explode(' ', Config::get('app.name'))[1]) }}</span>
                     </a>
                 </div>
                  <form class="js-validation-signin" action="{{ route('password.update') }}" method="post" novalidate="novalidate" autocomplete="off">

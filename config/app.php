@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'JND Short URL'),
+    'name' => env('APP_NAME', 'JND ShortURL'),
     'version' => env('APP_VERSION', 'v 1.00.00'),
 
     /*

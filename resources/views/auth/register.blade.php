@@ -8,7 +8,8 @@
                 <div class="py-30 text-center">
                     <a class="link-effect font-w700" href="index.php">
                         <i class="si si-fire"></i>
-                        <span class="font-size-xl text-primary-dark">SiS</span><span class="font-size-xl">Cloud</span>
+                        <span class="font-size-xl text-danger">{{ strtoupper(explode(' ', Config::get('app.name'))[0]) }}</span>
+                        <span class="font-size-xl">{{ strtoupper(explode(' ', Config::get('app.name'))[1]) }}</span>
                     </a>
                     <h1 class="h4 font-w700 mt-30 mb-10">Create New Account</h1>
                     <h2 class="h5 font-w400 text-muted mb-0">We’re excited to have you on board!</h2>
