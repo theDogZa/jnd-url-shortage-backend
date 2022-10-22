@@ -65,72 +65,27 @@ class LoginController extends Controller
             $user->last_login = date("Y-m-d H:i:s");
             $user->save();
 
-            Log::channel('appsyslog')->info(
-                '#log#',
-                [
-                    'username' => Auth::user()->username,
-                    'ip' => $request->ip(),
-                    'date' =>  date("Y-m-d H:i:s"),
-                    'uri' => Route::current()->uri,
-                    'parameters' => Route::current()->parameters(),
-                    'route' => Route::currentRouteName(),
-                    'request' => $request->all(),
-                    'response_code' => 200,
-                    'methods' => Route::current()->methods
-                ]
-            ); 
-
-            
-
             return redirect()->route('home');
 
         } elseif (Auth::attempt(array($fieldType => $input['username'], 'password' => $input['password'])))   {
 
                 $user = User::find(Auth::id());
-               
+
                 if (@$user->Active == 0 || @$user->Activated == 0) {
                     
-                    Log::channel('appsyslog')->info(
-                        '#log#',
-                        [
-                            'username' => $input['username'],
-                            'ip' => $request->ip(),
-                            'date' =>  date("Y-m-d H:i:s"),
-                            'uri' => Route::current()->uri,
-                            'parameters' => Route::current()->parameters(),
-                            'route' => Route::currentRouteName(),
-                            'request' => $request->all(),
-                            'response_code' => 400,
-                            'methods' => Route::current()->methods
-                        ]
-                    ); 
 
                     Auth::logout();
                     Session()->flush();
                     return redirect()->route('login')
                     ->with('error', 'User not Active/Activated.');
                 }
- 
+
         }else{
-            Log::channel('appsyslog')->info(
-                '#log#',
-                [
-                    'username' => $input['username'],
-                    'ip' => $request->ip(),
-                    'date' =>  date("Y-m-d H:i:s"),
-                    'uri' => Route::current()->uri,
-                    'parameters' => Route::current()->parameters(),
-                    'route' => Route::currentRouteName(),
-                    'request' => $request->all(),
-                    'response_code' => 401,
-                    'methods' => Route::current()->methods
-                ]
-            ); 
+            
             return redirect()->route('login')
                 ->with('error', 'Username/Email-Address And Password Are Wrong');
         }
 
-        
     }
 
     public function logout()

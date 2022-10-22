@@ -81,11 +81,8 @@ class ChangePasswordController extends Controller
       DB::beginTransaction();
 
       $user = User::find(Auth::id());
-    
-      $code = $user->username. "@system:". $input->password;
-
       $user->password = Hash::make($input->password);
-      $user->auth_code = base64_encode($code);
+
       $user->save();
 
       DB::commit();

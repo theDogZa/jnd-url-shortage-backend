@@ -75,7 +75,7 @@ class RegisterController extends Controller
             'Active' => 0,
             'activated' => 1,
             'active' => 1,
-            'user_right' => 1, //---frontend
+            'user_right' => 5, //---
             'password' => Hash::make($data['password']),
             'token' => Str::random(80),
                     

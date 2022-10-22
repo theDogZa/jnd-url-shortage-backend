@@ -45,8 +45,8 @@ class ProfilesController extends Controller
         header("Pragma: no-cache");
         header('Content-Type: text/html');
         $this->arrShowFieldProfile = [
-		 'username' => 1,  'first_name' => 1,  'last_name' => 1,  'email' => 1,  'email_verified_at' => 0,  'password' => 1,  'auth_code' => 0,  'active' => 0,  'activated' => 0,  'remember_token' => 0,  'last_login' => 1, 		];
-    }
+		      'username' => 1,  'first_name' => 1,  'last_name' => 1,  'email' => 1,  'email_verified_at' => 0,  'password' => 1,  'auth_code' => 0,  'active' => 0,  'activated' => 0,  'remember_token' => 0,  'last_login' => 1, 		];
+        }
 
  /**
    * Show profile the form for editing the specified resource.
@@ -67,7 +67,7 @@ class ProfilesController extends Controller
     return view('_profile.form',$user, (array) $compact);
   }
 
-   /**
+    /**
    * Update the specified resource in storage.
    *
    * @param  \Illuminate\Http\Request  $request
@@ -81,15 +81,13 @@ class ProfilesController extends Controller
   
     try {
       DB::beginTransaction();
-      $config = ApiConfig::select('val')->where('code', 'UNLI')->first();
+      
       $user = User::find(Auth::id());   
       if($user->username !== $input->username){
-        // $code = $input->username. "@system:". $user->password;
-        $code = $input->username . $config->val . $input->current_password;
-        $user->auth_code = base64_encode($code);
+  
         $user->username = $input->username;
       }
- 
+
       $user->email = $input->email;
       $user->first_name = $input->first_name;
       $user->last_name = $input->last_name;
@@ -125,7 +123,7 @@ class ProfilesController extends Controller
     $response = (object)[];
     $chk = false;
     $user = User::select('id')->where('username',$request->username)->first();
-   
+  
     if(!isset($user->id)){
         $chk = true;
     }
